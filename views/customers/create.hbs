@@ -1,0 +1,28 @@
+{{#extends "base"}}
+{{#block "content"}}
+<h1>Add a New Customer</h1>
+<form method="POST">
+    <div class="mb-3">
+        <label>First Name</label>
+        <input type="text" class="form-control" name="first_name">
+    </div>
+    <div class="mb-3">
+        <label>Last Name</label>
+        <input type="text" class="form-control" name="last_name">
+    </div>
+    <div class="mb-3">
+        <label>Rating</label>
+        <input type="text" class="form-control" name="rating">
+    </div>
+    <div class="mb-3">
+        <label>Company</label>
+        <select name="company_id" class="form-control">
+            {{#each companies}}
+            <option value="{{company_id}}">{{name}}</option>
+            {{/each}}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Customer</button>
+</form>
+{{/block}}
+{{/extends}}

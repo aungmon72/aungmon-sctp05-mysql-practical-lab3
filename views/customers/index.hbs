@@ -1,5 +1,5 @@
 {{#extends "base"}}
-{{#block"content"}}
+{{#block "content"}}
 <h1>Customers</h1>
 <table class="table">
     <tr>
@@ -7,13 +7,23 @@
         <th>Last Name</th>
         <th>Rating</th>
         <th>Company</th>
+
+        <th>Action</th>
     </tr>
+
+
     {{#each customers}}
     <tr>
-        <td>{{Customers.first_name}}</td>
-        <td>{{Customers.last_name}}</td>
-        <td>{{Customers.rating}}</td>
-        <td>{{Companies.name}}</td>
+        
+        <td>{{this.first_name}}
+        </td>
+        <td>{{this.last_name}}
+        </td>
+        <td>{{this.rating}}
+        </td>
+        <td>{{this.name}}</td>
+
+        <td><a href="/customers/{{customer_id}}/edit">Edit</a>
     </tr>
     {{/each}}
 </table>
