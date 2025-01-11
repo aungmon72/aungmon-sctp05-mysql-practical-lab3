@@ -56,19 +56,19 @@ async function main() {
         })
     })
 
-    app.get('/customers/create', async(req,res)=>{
-        let [companies] = await connection.execute('SELECT * from Companies');
-        console.log(companies);
-        res.render('customers/add', {
-            'companies': companies
-        })
-    })
+    // app.get('/customers/create', async(req,res)=>{
+    //     let [companies] = await connection.execute('SELECT * from Companies');
+    //     console.log(companies);
+    //     res.render('customers/add', {
+    //         'companies': companies
+    //     })
+    // })
     
 
 
     // app.get('/customers/create', async(req,res)=>{
     //     let [companies] = await connection.execute('SELECT * from Companies');
-    //     res.render('customers/add', {
+    //     res.render('customers', {
     //         'companies': companies
     //     })
     // })
@@ -118,7 +118,7 @@ async function main() {
     app.post('/customers/:customer_id/edit', async (req, res) => {
         let {first_name, last_name, rating, company_id} = req.body;
         let query = 'UPDATE Customers SET first_name=?, last_name=?, rating=?, company_id=? WHERE customer_id=?';
-        let bindings = [first_name, last_name, rating, company_id, req.params.customer_id];
+        let bindings = [first_name, last_name, parseInt(rating), company_id, req.params.customer_id];
         await connection.execute(query, bindings);
         res.redirect('/customers');
     })
